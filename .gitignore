@@ -1,4 +1,5 @@
 *.ihex
+*.hex
 
 # Prerequisites
 *.d

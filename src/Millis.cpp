@@ -25,7 +25,7 @@ void Millis::initial()
     OCR1A = ctc_match_overflow;
     //OCR1AH = (ctc_match_overflow >> 8);
     //OCR1AL = ctc_match_overflow;
-    //
+
     // Enable the compare match interrupt
     TIMSK1 |= (1 << OCIE1A);
 }
@@ -47,5 +47,6 @@ unsigned long Millis::get()
     }
     return millis_return;
     */
+
     return timer1_millis;
 }

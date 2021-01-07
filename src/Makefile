@@ -1,19 +1,18 @@
 #   Makefile
-#   Version 
+#   Version 1.4
 #   Author: WildfootW
 #   GitHub: github.com/WildfootW
-#   Copyright (C) 2019-2020 WildfootW All rights reserved.
+#   Copyleft (ɔ) 2019-2021 WildfootW All rights reversed.
 
 COMPILE_MCU         := atmega328p
 DUDE_MCU            := m328p
-DUDE_USB_PORT       := /dev/ttyS8 # Your Serial Port
+DUDE_USB_PORT       := /dev/ttyS6 # Your Serial Port
 PROGRAMMER          := stk500v1 # ArduinoISP
 PROGRAMMER_BAUD     := 19200 # 19200 for ArduinoISP stk500v1
 
-F_CPU               := 1000000UL
-#F_CPU               := 8000000UL
+F_CPU               := 1000000UL # 1 MHz (16 / 16)
 TARGET              := main
-SRCS                := main ADConverter Millis ObstacleDetector RouteDetector Sensors SevenSegment WheelControl Usart
+SRCS                := main Millis
 SRCOBJS             := $(addsuffix .o, $(SRCS))
 
 CXX                 := avr-g++
@@ -45,7 +44,15 @@ flash:
 size: ${TARGET}.elf
 	${AVRSIZE} -C --mcu=${COMPILE_MCU} ${TARGET}.elf
 
+.PHONY: fuse_write
+fuse_write:
+	${AVRDUDE} -p ${DUDE_MCU} -c ${PROGRAMMER} -b ${PROGRAMMER_BAUD} -P ${DUDE_USB_PORT} -U lfuse:w:0x60:m
+
+.PHONY: fuse_read
+fuse_read:
+	${AVRDUDE} -p ${DUDE_MCU} -c ${PROGRAMMER} -b ${PROGRAMMER_BAUD} -P ${DUDE_USB_PORT} -U lfuse:r:low_fuse.hex:h
+
 .PHONY: clean
 clean:
-	rm -f *.o *.ihex *.elf
+	rm -f *.o *.ihex *.hex *.elf
 

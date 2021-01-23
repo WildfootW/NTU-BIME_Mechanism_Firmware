@@ -1,9 +1,17 @@
-# NTU-BEM-Lab Homework-A Firmware
+# NTU-BEM-Lab Homework-A Sensor-Node-Firmware
+
+## Todo
+* UART header
+* XBee header
+* Add CMake
+* Makefile - add burn fuse
+* Makefile - add bootloader
 
 ## Programming
 * 28.8 Serial Downloading
     * Both the Flash and EEPROM memory arrays can be programmed using the serial SPI bus while RESET is pulled to GND.
 
+* [Program AVR Using Arduino Simplest Way!!](https://riktronics.wordpress.com/2016/07/26/program-avr-using-arduino-simplest-way/)
 ### ArduinoISP / stk500v1 / WSL
 * [Arduino as ISP and Arduino Bootloaders](https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP)
 * [WSL2: Ubuntu 18.04 Serial devices are no longer mounted properly #4322](https://github.com/microsoft/WSL/issues/4322)

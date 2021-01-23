@@ -7,6 +7,13 @@
 * Makefile - add burn fuse
 * Makefile - add bootloader
 
+## Makefile
+* [arduino-flash-tools/tools_linux_64/avrdude/etc/avrdude.conf](https://github.com/arduino/arduino-flash-tools/blob/master/tools_linux_64/avrdude/etc/avrdude.conf)
+```
+C:\Program Files\WindowsApps\ArduinoLLC.ArduinoIDE_1.8.42.0_x86__mdqgnx93n4wtt\hardware\tools\avr/bin/avrdude -CC:\Program Files\WindowsApps\ArduinoLLC.ArduinoIDE_1.8.42.0_x86__mdqgnx93n4wtt\hardware\tools\avr/etc/avrdude.conf -v -patmega328p -cstk500v1 -PCOM6 -b19200 -e -Ulock:w:0x3F:m -Uefuse:w:0xFD:m -Uhfuse:w:0xDE:m -Ulfuse:w:0xFF:m
+C:\Program Files\WindowsApps\ArduinoLLC.ArduinoIDE_1.8.42.0_x86__mdqgnx93n4wtt\hardware\tools\avr/bin/avrdude -CC:\Program Files\WindowsApps\ArduinoLLC.ArduinoIDE_1.8.42.0_x86__mdqgnx93n4wtt\hardware\tools\avr/etc/avrdude.conf -v -patmega328p -cstk500v1 -PCOM6 -b19200 -Uflash:w:C:\Program Files\WindowsApps\ArduinoLLC.ArduinoIDE_1.8.42.0_x86__mdqgnx93n4wtt\hardware\arduino\avr/bootloaders/optiboot/optiboot_atmega328.hex:i -Ulock:w:0x0F:m
+```
+
 ## Programming
 * 28.8 Serial Downloading
     * Both the Flash and EEPROM memory arrays can be programmed using the serial SPI bus while RESET is pulled to GND.
@@ -25,8 +32,12 @@
 * [Usbasp programming - Cannot set sck period error](https://www.avrfreaks.net/forum/usbasp-programming-cannot-set-sck-period-error)
     > It look like a regular Chinese USBASP.   Hence it will set SCK automatically.   Ignore the SCK warning.
 
+## Bootloader
+* [Arduino Nano ATmega328P bootloader difference](https://arduino.stackexchange.com/questions/51866/arduino-nano-atmega328p-bootloader-difference)
+
 ## XBee
 * Note - XBee PRO S2C
+* [ liberza / atmega-xbee-digimesh ](https://github.com/liberza/atmega-xbee-digimesh)
 ### XCTU
 * [XCTU](https://www.digi.com/products/embedded-systems/digi-xbee/digi-xbee-tools/xctu)
 

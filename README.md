@@ -26,6 +26,7 @@
     > It look like a regular Chinese USBASP.   Hence it will set SCK automatically.   Ignore the SCK warning.
 
 ## XBee
+* Note - XBee PRO S2C
 ### XCTU
 * [XCTU](https://www.digi.com/products/embedded-systems/digi-xbee/digi-xbee-tools/xctu)
 

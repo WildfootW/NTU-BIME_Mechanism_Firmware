@@ -43,3 +43,4 @@ C:\Program Files\WindowsApps\ArduinoLLC.ArduinoIDE_1.8.42.0_x86__mdqgnx93n4wtt\h
 
 ## Reference
 * [Recovering from a "locked out" AVR](https://www.avrfreaks.net/forum/tutsoft-recovering-locked-out-avr)
+* [External Clock for the Atmega328P | AVR Freaks](https://www.avrfreaks.net/forum/external-clock-atmega328p)

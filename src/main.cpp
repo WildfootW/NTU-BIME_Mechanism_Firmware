@@ -10,14 +10,14 @@ extern "C"
     #include <avr/interrupt.h>
 }
 
-#include "IOPin.hpp"
+#include "avr-utils/IOPin.hpp"
 
-#include "Millis.hpp"
+#include "avr-utils/Millis.hpp"
 Millis millis; // Timer1
 
 void initial()
 {
-    CLKPR = (1 << CLKPCE);
+    CLKPR = (1 << CLKPCE); // clock prescaler change enable
     CLKPR = 0b00000100; // set clk to 1 Mhz (16 / 16)
 
     millis.initial();

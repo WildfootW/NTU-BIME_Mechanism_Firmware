@@ -10,10 +10,10 @@
 #ifndef USART_HPP
 #define USART_HPP
 
-class Usart
+class USART
 {
 public:
-    Usart(unsigned int baud_rate = 9600): baud_rate(baud_rate){}
+    USART(unsigned int baud_rate = 9600): baud_rate(baud_rate){}
     void initial();
     void put_str(char* str_ptr);
 private:

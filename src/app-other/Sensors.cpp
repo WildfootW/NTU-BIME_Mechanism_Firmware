@@ -11,13 +11,6 @@
 
 extern Millis millis;
 
-/* BasicSensor */
-void BasicSensor::value_update(uint8_t input_value)
-{
-    unsigned int new_value = (mix_value * 9) + input_value;
-    mix_value = new_value / 10;
-}
-
 /* IrSensorTCRT5000 */
 void IrSensorTCRT5000::initial(uint16_t divide, bool less_than)
 {

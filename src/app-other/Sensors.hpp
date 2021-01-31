@@ -10,15 +10,7 @@
 #define SENSORS_H
 
 #include <stdint.h>
-
-class BasicSensor
-{
-public:
-    BasicSensor(){}
-    void value_update(uint8_t input_value);
-protected:
-    uint16_t mix_value;
-};
+#include "BasicSensor.hpp"
 
 class IrSensorTCRT5000: public BasicSensor
 {

@@ -1,4 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
+
+# Use AVR GCC toolchain
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_CXX_COMPILER avr-g++)
+set(CMAKE_C_COMPILER avr-gcc)
+set(CMAKE_ASM_COMPILER avr-gcc)
+
 # Project name
 project("NTU-BEM_Homework-A_Node-Firmware")
 
@@ -16,7 +23,6 @@ set(BAUD 9600)
 #set(PROGRAMMER stk500v1)
 #set(PROGRAMMER_BAUD 19200)
 
-
 ## AVR Fuses, must be in concordance with your hardware and F_CPU
 ## http://eleccelerator.com/fusecalc/fusecalc.php?chip=atmega328p
 #set(E_FUSE 0xFD)
@@ -24,14 +30,6 @@ set(BAUD 9600)
 #set(L_FUSE 0xFF)
 #
 #set(LOCK_BIT 0xFF)
-
-
-# Use AVR GCC toolchain
-set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_CXX_COMPILER avr-g++)
-set(CMAKE_C_COMPILER avr-gcc)
-set(CMAKE_ASM_COMPILER avr-gcc)
-
 
 ## Pass parameter to compiler & linker
 # Pass defines to compiler

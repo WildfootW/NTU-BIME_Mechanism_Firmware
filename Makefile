@@ -11,6 +11,7 @@ PROGRAMMER_BAUD     := 19200 # 19200 for ArduinoISP stk500v1
 
 AVRSIZE             := avr-size
 AVRDUDE             := avrdude
+DUDE_OPTIONS        := -p ${MCU} -c ${PROGRAMMER} -b ${PROGRAMMER_BAUD} -P ${DUDE_USB_PORT} 
 
 E_FUSE              := 0xFD
 H_FUSE              := 0xDE
@@ -20,7 +21,7 @@ L_FUSE              := 0xFF
 OUTPUT_FILE         := src/output
 
 .PHONY: all
-all: configure compile upload_flash
+all: compile upload_flash
 
 .PHONY: configure
 configure:
@@ -28,31 +29,29 @@ configure:
 	cmake .
 
 .PHONY: compile
-compile:
+compile: ./src/Makefile
 	cd ./src && \
 	make
 	${AVRSIZE} -C --mcu=${MCU} ${OUTPUT_FILE}.elf
 
 .PHONY: upload_flash
 upload_flash:
-	${AVRDUDE} -p ${MCU} -c ${PROGRAMMER} -b ${PROGRAMMER_BAUD} -P ${DUDE_USB_PORT} -U flash:w:${OUTPUT_FILE}.ihex:i
+	${AVRDUDE} ${DUDE_OPTIONS} -U flash:w:${OUTPUT_FILE}.ihex:i
 
 .PHONY: upload_eeprom
 upload_eeprom:
-	${AVRDUDE} -p ${MCU} -c ${PROGRAMMER} -b ${PROGRAMMER_BAUD} -P ${DUDE_USB_PORT} -U eeprom:w:${OUTPUT_FILE}.ihex:i
+	${AVRDUDE} ${DUDE_OPTIONS} -U eeprom:w:${OUTPUT_FILE}.ihex:i
 
-.PHONY: fuse_write
+.PHONY: write_fuse
 fuse_write:
-	${AVRDUDE} -p ${MCU} -c ${PROGRAMMER} -b ${PROGRAMMER_BAUD} -P ${DUDE_USB_PORT} -U efuse:w:${E_FUSE}:m -U hfuse:w:${H_FUSE}:m -U lfuse:w:${L_FUSE}:m
+	${AVRDUDE} ${DUDE_OPTIONS} -U efuse:w:${E_FUSE}:m -U hfuse:w:${H_FUSE}:m -U lfuse:w:${L_FUSE}:m
 
-.PHONY: fuse_read
-fuse_read:
-	${AVRDUDE} -p ${MCU} -c ${PROGRAMMER} -b ${PROGRAMMER_BAUD} -P ${DUDE_USB_PORT} -U lfuse:r:l_fuse.hex:h
-	cat l_fuse.hex
-	rm l_fuse.hex
+.PHONY: test_chip
+test_chip:
+	${AVRDUDE} ${DUDE_OPTIONS}
 
 .PHONY: clean
-clean:
+clean: ./src/Makefile
 	cd ./src && \
 	make clean
 

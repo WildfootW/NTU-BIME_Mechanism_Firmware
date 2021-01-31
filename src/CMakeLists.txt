@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 
+# Project name
+project("NTU-BEM_Homework-A_Node-Firmware")
+
 # Use AVR GCC toolchain
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_CXX_COMPILER avr-g++)
 set(CMAKE_C_COMPILER avr-gcc)
 set(CMAKE_ASM_COMPILER avr-gcc)
-
-# Project name
-project("NTU-BEM_Homework-A_Node-Firmware")
 
 set(MAIN_FILE_NAME main)
 

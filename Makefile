@@ -5,9 +5,12 @@
 #   Copyleft (ɔ) 2019-2021 WildfootW All rights reversed.
 
 MCU                 := atmega328p
-DUDE_USB_PORT       := /dev/ttyS8 # Your Serial Port
-PROGRAMMER          := stk500v1 # ArduinoISP
-PROGRAMMER_BAUD     := 19200 # 19200 for ArduinoISP stk500v1
+# Your Serial Port
+DUDE_USB_PORT       := /dev/ttyS8
+# ArduinoISP
+PROGRAMMER          := stk500v1
+# 19200 for ArduinoISP stk500v1
+PROGRAMMER_BAUD     := 19200
 
 AVRSIZE             := avr-size
 AVRDUDE             := avrdude

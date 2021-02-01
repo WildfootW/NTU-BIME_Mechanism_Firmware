@@ -16,8 +16,8 @@ set(F_CPU 1000000UL)
 # CPU, you can find the list here:
 # https://gcc.gnu.org/onlinedocs/gcc/AVR-Options.html
 set(MCU atmega328p)
-# Default Baudrate for UART, read avr include/util/setbaud.h for usage
-set(BAUD 9600)
+## Default Baudrate for UART, read avr include/util/setbaud.h for usage
+#set(BAUD 9600)
 
 ## The programmer to use, read avrdude manual for list
 #set(PROGRAMMER stk500v1)

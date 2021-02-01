@@ -9,7 +9,7 @@ set(CMAKE_CXX_COMPILER avr-g++)
 set(CMAKE_C_COMPILER avr-gcc)
 set(CMAKE_ASM_COMPILER avr-gcc)
 
-set(MAIN_FILE_NAME main)
+set(MAIN_FILE_NAME usart)
 
 ## AVR Chip Configuration
 set(F_CPU 1000000UL)

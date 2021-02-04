@@ -40,12 +40,8 @@ Crystal 16MHz
 * Sensors.hpp
     * Using **ADC0-5** (in main/ISR)
     * Basic sensor function
-* SevenSegment.hpp
-    * Using **PD0-6**
 * Usart.hpp
     * Using **PD1**
-* WheelControl.hpp
-    * Using **PD2-7**, **Timer0**
 
 ## Reference
 ### Document
@@ -133,8 +129,11 @@ enum class SevenSegmentGraph
 PORTB = ~static_cast<uint8_t>(graph);
 ```
 
-### Usart Baud Rate error
+### Usart Baud
 * [AVR Baud Rate Tables](https://cache.amobbs.com/bbs_upload782111/files_22/ourdev_508497.html)
+* [ UART Not working with ATMEGA328P ](https://www.avrfreaks.net/forum/uart-not-working-atmega328p)
+> change the AVR code to send nothing but 'U' (because 'U' with 8-N-1 is a constant 0101010101010.. pattern) and then measure the TXD pulse width. is that 104us. If it isn't then either your UBRR code is wrong or your assumption about `F_CPU` is.
+My experience: 1 MHz 9600 garbled, but 16 MHz 115200 Successed.
 
 ### Power
 * [Feeding power to Arduino: the ultimate guide](https://www.open-electronics.org/the-power-of-arduino-this-unknown/)
@@ -142,7 +141,4 @@ PORTB = ~static_cast<uint8_t>(graph);
 
 ## AVR Debug
 * [AVR Debugging on Linux (with debugWire)](http://luniks.net/avr-debug.jsp)
-
-## TODO
-* fix USART
 

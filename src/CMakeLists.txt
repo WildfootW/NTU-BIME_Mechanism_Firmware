@@ -12,7 +12,8 @@ set(CMAKE_ASM_COMPILER avr-gcc)
 set(MAIN_FILE_NAME usart)
 
 ## AVR Chip Configuration
-set(F_CPU 1000000UL)
+#set(F_CPU 1000000UL)
+set(F_CPU 16000000UL)
 # CPU, you can find the list here:
 # https://gcc.gnu.org/onlinedocs/gcc/AVR-Options.html
 set(MCU atmega328p)

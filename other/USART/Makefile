@@ -22,7 +22,7 @@ OBJDUMP             := avr-objdump
 AVRSIZE             := avr-size
 AVRDUDE             := avrdude
 
-CXXFLAGS_COMPILE    := -c -std=c++11 -Wall -Os -ffunction-sections -fdata-sections -mmcu=${MCU} -DF_CPU=${F_CPU} -DNDEBUG
+CXXFLAGS_COMPILE    := -c -std=c++11 -Wall -Os -ffunction-sections -fdata-sections -mmcu=${MCU} -DNDEBUG
 CXXFLAGS_LINK       := -Os -mmcu=${MCU} -ffunction-sections -fdata-sections -Wl,--gc-sections
 
 .PHONY: all

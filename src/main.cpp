@@ -8,7 +8,7 @@
 #include "avr-utils/IOPin.hpp"
 
 #include "avr-utils/USART.hpp"
-USART usart(9600);
+USART usart(115200);
 
 void initial()
 {
@@ -25,7 +25,7 @@ int main(void)
 
     while(true)
     {
-        char str[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\0";
+        char str[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n";
         usart.put_str(str);
     }
 }

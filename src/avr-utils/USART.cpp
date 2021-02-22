@@ -24,7 +24,7 @@ void USART::initial()
     UCSR0C &= ~(1 << UMSEL01) & ~(1 << UMSEL00); // Asynchronous USART
     UCSR0C &= ~(1 << UPM01) & ~(1 << UPM00); // Parity Disabled
     UCSR0C &= ~(1 << USBS0); // Stop Bit 1-bit
-    UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00); // Data bits 8-bit
+    UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00); // Data Bits 8-bit
 
     // UCSR0B
     UCSR0B |= (1 << TXEN0); // TX Enabled

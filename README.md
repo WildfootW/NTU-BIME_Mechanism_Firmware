@@ -70,3 +70,8 @@ avrdude
 * [Recovering from a "locked out" AVR](https://www.avrfreaks.net/forum/tutsoft-recovering-locked-out-avr)
 * [External Clock for the Atmega328P | AVR Freaks](https://www.avrfreaks.net/forum/external-clock-atmega328p)
 * [All you need to know about AVR fuses](https://embedds.com/all-you-need-to-know-about-avr-fuses/)
+
+# minicom
+* Set Add Carriage Return
+    * [How can minicom “permanently” translate incoming newline (\n) to CR+LF?](https://unix.stackexchange.com/questions/283924/how-can-minicom-permanently-translate-incoming-newline-n-to-crlf)
+    * `pu addcarreturn    Yes`

@@ -25,7 +25,7 @@ int main(void)
 
     while(true)
     {
-        char str[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n";
+        char str[] = "WildfootW\n";
         usart.put_str(str);
     }
 }

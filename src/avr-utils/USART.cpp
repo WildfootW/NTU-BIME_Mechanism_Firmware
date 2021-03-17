@@ -1,8 +1,7 @@
 /*
- * Version 
  * Author: WildfootW
  * GitHub: github.com/WildfootW
- * Copyleft (C) 2020 WildfootW all rights reversed
+ * Copyleft (C) 2020-2021 WildfootW all rights reversed
  *
  * UCSR0C - Asynchronous/synchronous, parity, stop bit, and data size
  * UCSR0B - Mode Control
@@ -29,16 +28,6 @@ constexpr uint16_t _calc_ubrr(const unsigned long int& baud_rate)
 template <uint32_t baud_rate>
 void USART<baud_rate>::initial()
 {
-    // UBRR0
-//    switch(baud_rate)
-//    {
-//        case 9600:   UBRR0 = 103 break;
-//        case 115200: UBRR0 = 8;  break;
-//    }
-//    uint16_t ubrr = (F_CPU / (baud_rate * 16)) - 1;
-//    UBRR0 = ubrr;
-// [TODO]: Decide during compile time
-
     constexpr uint16_t ubrr = _calc_ubrr(baud_rate);
     UBRR0 = ubrr;
 

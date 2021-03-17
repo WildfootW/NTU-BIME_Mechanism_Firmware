@@ -11,10 +11,23 @@
  * UDR0 - Shift (data) Register
  */
 
+#ifndef USART_CPP
+#define USART_CPP
+
 #include "USART.hpp"
 #include <avr/io.h>
 
-void USART::initial()
+constexpr uint16_t _calc_ubrr(const unsigned long int& baud_rate)
+{
+    uint16_t tmp = (((double)F_CPU / (baud_rate * 16)) - 1) * 10;
+    if(tmp % 10 >= 5)
+        return tmp / 10 + 1;
+    else
+        return tmp / 10;
+}
+
+template <uint32_t baud_rate>
+void USART<baud_rate>::initial()
 {
     // UBRR0
 //    switch(baud_rate)
@@ -25,11 +38,9 @@ void USART::initial()
 //    uint16_t ubrr = (F_CPU / (baud_rate * 16)) - 1;
 //    UBRR0 = ubrr;
 // [TODO]: Decide during compile time
-    uint16_t ubrr = (((double)F_CPU / (baud_rate * 16)) - 1) * 10;
-    if(ubrr % 10 >= 5)
-        UBRR0 = ubrr / 10 + 1;
-    else
-        UBRR0 = ubrr / 10;
+
+    constexpr uint16_t ubrr = _calc_ubrr(baud_rate);
+    UBRR0 = ubrr;
 
     // UCSR0C
     UCSR0C &= ~(1 << UMSEL01) & ~(1 << UMSEL00); // Asynchronous USART
@@ -41,7 +52,9 @@ void USART::initial()
     UCSR0B |= (1 << TXEN0); // TX Enabled
 //    UCSR0B |= (1 << RXEN0); // RX Enabled
 }
-void USART::put_str(char* str_ptr)
+
+template <uint32_t baud_rate>
+void USART<baud_rate>::put_str(char* str_ptr)
 {
     while(*str_ptr != '\0')
     {
@@ -51,3 +64,4 @@ void USART::put_str(char* str_ptr)
     }
 }
 
+#endif //USART_CPP

@@ -8,7 +8,7 @@
 #include "avr-utils/IOPin.hpp"
 
 #include "avr-utils/USART.hpp"
-USART usart(115200);
+USART<115200> usart;
 
 void initial()
 {

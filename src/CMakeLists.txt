@@ -41,7 +41,7 @@ add_definitions(
 # mmcu MUST be passed to bot the compiler and linker, this handle the linker
 add_compile_options(
     -mmcu=${MCU} # MCU
-    -std=c++11
+    -std=c++14
     -Os # optimize
     -Wall # enable warnings
     #    -Wno-main

@@ -129,6 +129,13 @@ enum class SevenSegmentGraph
 PORTB = ~static_cast<uint8_t>(graph);
 ```
 
+### Data Type
+* Mind Data Type Size: [ <stdint.h>: Standard Integer Types ](https://www.nongnu.org/avr-libc/user-manual/group__avr__stdint.html)
+```
+typedef unsigned int    uint16_t
+typedef unsigned long int     uint32_t
+```
+
 ### Usart Baud
 * [AVR Baud Rate Tables](https://cache.amobbs.com/bbs_upload782111/files_22/ourdev_508497.html)
 * [ UART Not working with ATMEGA328P ](https://www.avrfreaks.net/forum/uart-not-working-atmega328p)

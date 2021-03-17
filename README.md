@@ -67,9 +67,17 @@ avrdude
 * [XCTU](https://www.digi.com/products/embedded-systems/digi-xbee/digi-xbee-tools/xctu)
 
 ## Reference
+### Fuses
 * [Recovering from a "locked out" AVR](https://www.avrfreaks.net/forum/tutsoft-recovering-locked-out-avr)
 * [External Clock for the Atmega328P | AVR Freaks](https://www.avrfreaks.net/forum/external-clock-atmega328p)
 * [All you need to know about AVR fuses](https://embedds.com/all-you-need-to-know-about-avr-fuses/)
+
+### Other
+* Mind Data Type Size: [ <stdint.h>: Standard Integer Types ](https://www.nongnu.org/avr-libc/user-manual/group__avr__stdint.html)
+```
+typedef unsigned int    uint16_t
+typedef unsigned long int     uint32_t
+```
 
 # minicom
 * Set Add Carriage Return

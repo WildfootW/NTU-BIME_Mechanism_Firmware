@@ -17,8 +17,18 @@
 void USART::initial()
 {
     // UBRR0
-    uint16_t ubrr = (F_CPU / (baud_rate * 16)) - 1;
-    UBRR0 = ubrr;
+//    switch(baud_rate)
+//    {
+//        case 9600:   UBRR0 = 103 break;
+//        case 115200: UBRR0 = 8;  break;
+//    }
+//    uint16_t ubrr = (F_CPU / (baud_rate * 16)) - 1;
+//    UBRR0 = ubrr;
+    uint16_t ubrr = (((double)F_CPU / (baud_rate * 16)) - 1) * 10;
+    if(ubrr % 10 >= 5)
+        UBRR0 = ubrr / 10 + 1;
+    else
+        UBRR0 = ubrr / 10;
 
     // UCSR0C
     UCSR0C &= ~(1 << UMSEL01) & ~(1 << UMSEL00); // Asynchronous USART

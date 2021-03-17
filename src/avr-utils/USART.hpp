@@ -13,11 +13,11 @@
 class USART
 {
 public:
-    USART(unsigned long int baud_rate = 9600): baud_rate(baud_rate){}
+    USART(const unsigned long int& baud_rate = 9600): baud_rate(baud_rate){}
     void initial();
     void put_str(char* str_ptr);
 private:
-    unsigned long int baud_rate; // Note: unsigned int: uint16_t
+    const unsigned long int baud_rate; // Note: unsigned int: uint16_t
 };
 
 #endif //USART_HPP

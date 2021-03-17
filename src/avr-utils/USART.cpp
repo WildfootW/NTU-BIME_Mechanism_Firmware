@@ -24,6 +24,7 @@ void USART::initial()
 //    }
 //    uint16_t ubrr = (F_CPU / (baud_rate * 16)) - 1;
 //    UBRR0 = ubrr;
+// [TODO]: Decide during compile time
     uint16_t ubrr = (((double)F_CPU / (baud_rate * 16)) - 1) * 10;
     if(ubrr % 10 >= 5)
         UBRR0 = ubrr / 10 + 1;

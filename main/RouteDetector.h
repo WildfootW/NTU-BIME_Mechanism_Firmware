@@ -17,6 +17,7 @@ enum RouteStatusType
     center_on_line,
     rright_on_line,
     aaaall_on_line,
+    nnnone_on_line,
     route_type_timeout,
     route_type_invalid,
 };
@@ -29,6 +30,7 @@ String route_status_to_str(const RouteStatusType type)
         case center_on_line: return "center_on_line";
         case rright_on_line: return "rright_on_line";
         case aaaall_on_line: return "aaaall_on_line";
+        case nnnone_on_line: return "nnnone_on_line";
         case route_type_timeout: return "route_type_timeout";
         case route_type_invalid: return "route_type_invalid";
     }
@@ -66,7 +68,8 @@ public:
         else if(new_status_value == 4) { new_status = rright_on_line; }
         else if(new_status_value == 6) { new_status = rright_on_line; }
         else if(new_status_value == 7) { new_status = aaaall_on_line; }
-        else { new_status = aaaall_on_line; }
+        else if(new_status_value == 5) { new_status = aaaall_on_line; }
+        else { new_status = nnnone_on_line; }
 
         if(new_status != current_status)
         {

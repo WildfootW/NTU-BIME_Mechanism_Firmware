@@ -33,6 +33,11 @@ void loop()
     RouteStatusType route_status = route_detector.get_current_status();
     switch(route_status)
     {
+        case nnnone_on_line:
+        {
+            pair_wheel.go(255);
+            break;
+        }
         case center_on_line:
         {
             pair_wheel.go(255);
@@ -40,17 +45,17 @@ void loop()
         }
         case llleft_on_line:
         {
-            pair_wheel.turn(100);
+            pair_wheel.turn(125);
             break;
         }
         case rright_on_line:
         {
-            pair_wheel.turn(-100);
+            pair_wheel.turn(-125);
             break;
         }
         case aaaall_on_line:
         {
-            pair_wheel.go(0);
+            pair_wheel.go(255);
             break;
         }
     }

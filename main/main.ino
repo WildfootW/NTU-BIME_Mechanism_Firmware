@@ -23,7 +23,7 @@ void setup()
 {
     Serial.begin(115200);
     pair_wheel.initial(1);
-    route_detector.initial(350, 150, 500);
+    route_detector.initial(100, 100, 100);
     pair_wheel.set_global_ratio(1);
 }
 

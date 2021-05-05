@@ -51,26 +51,26 @@ class PairWheelControl
 {
 public:
 #if with_enable_line
-    PairWheelControl(byte pin_a_llleft, byte pin_b_llleft, byte pin_en_llleft,      // digital, digital, pwm
-                     byte pin_a_rright, byte pin_b_rright, byte pin_en_rright):    // digital, digital, pwm
-                     llleft_wheel(pin_a_llleft, pin_b_llleft, pin_en_llleft),
-                     rright_wheel(pin_a_rright, pin_b_rright, pin_en_rright) {}
+    PairWheelControl(byte pin_a_l, byte pin_b_l, byte pin_en_l,     // digital, digital, pwm
+                     byte pin_a_r, byte pin_b_r, byte pin_en_r):    // digital, digital, pwm
+                     wheel_l(pin_a_l, pin_b_l, pin_en_l),
+                     wheel_r(pin_a_r, pin_b_r, pin_en_r) {}
 #else
-    PairWheelControl(byte pin_a_llleft, byte pin_b_llleft,                         // pwm, pwm
-                     byte pin_a_rright, byte pin_b_rright):                       // pwm, pwm
-                     llleft_wheel(pin_a_llleft, pin_b_llleft),
-                     rright_wheel(pin_a_rright, pin_b_rright) {}
+    PairWheelControl(byte pin_a_l, byte pin_b_l,                        // pwm, pwm
+                     byte pin_a_r, byte pin_b_r):                       // pwm, pwm
+                     wheel_l(pin_a_l, pin_b_l),
+                     wheel_r(pin_a_r, pin_b_r) {}
 #endif // with_enable_line
-    void initial(double speed_ratio = 1)    // speed_ratio = llleft_speed / rright_speed;
+    void initial(double speed_ratio = 1)    // speed_ratio = speed_l / speed_r;
     {
         global_ratio = 1;
-        if(speed_ratio > 1) { llleft_wheel.initial(1 / speed_ratio); rright_wheel.initial(1);           }
-        else                { llleft_wheel.initial(1);               rright_wheel.initial(speed_ratio); }
+        if(speed_ratio > 1) { wheel_l.initial(1 / speed_ratio); wheel_r.initial(1);           }
+        else                { wheel_l.initial(1);               wheel_r.initial(speed_ratio); }
     }
-    void set_speed(uint8_t llleft_speed, uint8_t rright_speed, bool llleft_backward = false, bool rright_backward = false) const
+    void set_speed(uint8_t speed_l, uint8_t speed_r, bool backward_l = false, bool backward_r = false) const
     {
-        llleft_wheel.set_speed(llleft_speed * global_ratio, llleft_backward);
-        rright_wheel.set_speed(rright_speed * global_ratio, rright_backward);
+        wheel_l.set_speed(speed_l * global_ratio, backward_l);
+        wheel_r.set_speed(speed_r * global_ratio, backward_r);
     }
     PairWheelControl& set_global_ratio(double ratio) { global_ratio = ratio ; return (*this); }
     PairWheelControl& keep(unsigned int time) { delay(time); return (*this); }
@@ -96,18 +96,18 @@ public:
     }
 
 private:
-    WheelControl llleft_wheel, rright_wheel;
+    WheelControl wheel_l, wheel_r;
     double global_ratio;
     void execute() const
     {
 #ifndef NDEBUG
-        Serial.print("llleft: ");
+        Serial.print("lleft: ");
 #endif // NDEBUG
-        llleft_wheel.execute();
+        wheel_l.execute();
 #ifndef NDEBUG
-        Serial.print("rright: ");
+        Serial.print("right: ");
 #endif // NDEBUG
-        rright_wheel.execute();
+        wheel_r.execute();
     }
 };
 #endif //WHEELCONTROL_H

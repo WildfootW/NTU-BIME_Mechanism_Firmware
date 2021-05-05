@@ -13,12 +13,10 @@
 
 enum RouteStatusType
 {
-    llleft_unknown,
     llleft_on_line,
-    center_unknown,
     center_on_line,
-    rright_unknown,
     rright_on_line,
+    aaaall_on_line,
     route_type_timeout,
     route_type_invalid,
 };
@@ -27,12 +25,10 @@ String route_status_to_str(const RouteStatusType type)
 {
     switch(type)
     {
-        case llleft_unknown: return "llleft_unknown";
         case llleft_on_line: return "llleft_on_line";
-        case center_unknown: return "center_unknown";
         case center_on_line: return "center_on_line";
-        case rright_unknown: return "rright_unkonwn";
         case rright_on_line: return "rright_on_line";
+        case aaaall_on_line: return "aaaall_on_line";
         case route_type_timeout: return "route_type_timeout";
         case route_type_invalid: return "route_type_invalid";
     }
@@ -64,23 +60,14 @@ public:
         if(sensor_c.target_detected()) { new_status_value += 2; }
         if(sensor_r.target_detected()) { new_status_value += 4; }
 
-        if(new_status_value == 0)
-        {
-            if(current_status == llleft_unknown || current_status == center_unknown || current_status == rright_unknown)
-            {
-                new_status = current_status;
-            }
-            else if(current_status == llleft_on_line) { new_status = llleft_unknown; }
-            else if(current_status == center_on_line) { new_status = center_unknown; }
-            else if(current_status == rright_on_line) { new_status = rright_unknown; }
-        }
+        if(new_status_value == 2)      { new_status = center_on_line; }
         else if(new_status_value == 1) { new_status = llleft_on_line; }
-        else if(new_status_value == 2) { new_status = center_on_line; }
+        else if(new_status_value == 3) { new_status = llleft_on_line; }
         else if(new_status_value == 4) { new_status = rright_on_line; }
-        else
-        {
-            new_status = route_type_invalid;
-        }
+        else if(new_status_value == 6) { new_status = rright_on_line; }
+        else if(new_status_value == 7) { new_status = aaaall_on_line; }
+        else { new_status = aaaall_on_line; }
+
         if(new_status != current_status)
         {
             last_change_status_time = millis();

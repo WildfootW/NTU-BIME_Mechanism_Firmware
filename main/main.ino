@@ -29,6 +29,29 @@ void setup()
 
 void loop()
 {
-    pair_wheel.go(255);
     route_detector.sensor_value_update();
+    RouteStatusType route_status = route_detector.get_current_status();
+    switch(route_status)
+    {
+        case center_on_line:
+        {
+            pair_wheel.go(255);
+            break;
+        }
+        case llleft_on_line:
+        {
+            pair_wheel.turn(100);
+            break;
+        }
+        case rright_on_line:
+        {
+            pair_wheel.turn(-100);
+            break;
+        }
+        case aaaall_on_line:
+        {
+            pair_wheel.go(0);
+            break;
+        }
+    }
 }

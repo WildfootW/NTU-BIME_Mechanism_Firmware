@@ -7,31 +7,28 @@
  */
 
 #include "Setting.h"
-#include "Wheel_Control.h"
+#include "WheelControl.h"
 #include "RouteDetector.h"
-#include "ObstacleDetector.h"
 
-// with enable line
-//PairWheelControl pair_wheel(7, 8, 9, 13, 12, 11);
+// with enable line:
+// pin_a_l, pin_b_l, pin_en_l, pin_a_r, pin_b_r, pin_en_r
+PairWheelControl pair_wheel(2, 4, 3, 7, 8, 9);
 // without enable line
-PairWheelControl pair_wheel(5, 6, 10, 11);
+//PairWheelControl pair_wheel(5, 6, 10, 11);
 
+// pin_l, pin_c, pin_r
 RouteDetector route_detector(A1, A2, A3);
-ObstacleDetector obstacle_detector(A0);
 
 void setup()
 {
     Serial.begin(115200);
     pair_wheel.initial(1);
     route_detector.initial(350, 150, 500);
-    obstacle_detector.initial();
     pair_wheel.set_global_ratio(1);
 }
 
 void loop()
 {
-
-    //pair_wheel.full_speed_ahead();
+    pair_wheel.go(255);
     route_detector.sensor_value_update();
-    obstacle_detector.sensor_value_update();
 }

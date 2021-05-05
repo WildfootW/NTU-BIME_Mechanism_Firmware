@@ -9,8 +9,7 @@
 #ifndef ROUTEDETECTOR_H
 #define ROUTEDETECTOR_H
 
-#include "Setting.h"
-#include "My_Sensor.h"
+#include "IrSensors.h"
 
 enum RouteStatusType
 {

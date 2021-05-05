@@ -6,12 +6,11 @@
  *
  */
 
-#ifndef WHEEL_CONTROL_H
-#define WHEEL_CONTROL_H
+#ifndef WHEELCONTROL_H
+#define WHEELCONTROL_H
 /*
  * class design for Arduino uno & L298 H-bridge controling two DC motor wheels.
  */
-#include "Setting.h"
 
 class WheelControl
 {
@@ -111,5 +110,5 @@ private:
         rright_wheel.execute();
     }
 };
-#endif //WHEEL_CONTROL_H
+#endif //WHEELCONTROL_H
 
